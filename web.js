@@ -1,14 +1,20 @@
 var express = require('express');
+var router = express.Router();
 var bodyParser = require('body-parser');
 var routes = require('./routes');
 
 var server = express();
 // parse application/x-www-form-urlencoded 
-server.use(bodyParser.urlencoded({ extended: false}));
+//server.use(bodyParser.urlencoded({ extended: false}));
 // parse application/json 
 server.use(bodyParser.json())
 
-server.set('views', __dirname);
+//server.set('views', __dirname);
+
+router.use(function timelog(request, response,next) {
+    console.log('Time: ', Date.now());
+    next(); 
+});
 
 server.get('/', routes.sayHello);
 server.get('/Employee', routes.newEmployee);

@@ -2,8 +2,8 @@ var pg = require('pg');
 
 var connectionString = "postgres://JohnMoshakis@localhost:5432/JohnMoshakis";
 
-module.exports.sayHello = function (request,response) {
-    response.send('Hello World...');    
+module.exports.application = function (request,response) {
+    return response.status(500).json({ application: "EmployeeAPI" });
 };
 
 module.exports.newEmployee = function(request,response) {
