@@ -1,24 +1,14 @@
 var express = require('express');
-var router = express.Router();
 var bodyParser = require('body-parser');
-var routes = require('./routes');
+var departmentRoutes = require('./department-routes');
+var employeeRoutes = require('./employee-routes');
+var applicationRoutes = require('./application-routes');
 
 var server = express();
-// parse application/x-www-form-urlencoded 
-//server.use(bodyParser.urlencoded({ extended: false}));
-// parse application/json 
-server.use(bodyParser.json())
+server.use(bodyParser.json()) // enable application/json
 
-//server.set('views', __dirname);
-
-router.use(function timelog(request, response,next) {
-    console.log('Time: ', Date.now());
-    next(); 
-});
-
-server.get('/', routes.sayHello);
-server.get('/Employee', routes.newEmployee);
-server.post('/api/employees', routes.addEmployee);
-server.get('/api/employees', routes.getEmployees);
+server.use('/api',departmentRoutes);
+server.use('/api',employeeRoutes);
+server.use('/', applicationRoutes);
 
 server.listen(8080);

@@ -8,11 +8,17 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.get('/api/departments', function(request, response) {
+router.get('/departments', function(request, response) {
+    var results = []; 
+    return response.status(200).json(results);
 });
 
-router.put('/api/departments', function(request, response) {
+router.put('/departments', function(request, response) {
+    return response.status(200).json({});
 });
 
-router.post('/api/departments', function(request, response) {
+router.post('/departments', function(request, response) {
+    return response.status(201).json({});
 });
+
+module.exports = router;
