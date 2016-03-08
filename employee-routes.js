@@ -1,16 +1,14 @@
 var pg = require('pg');
-var express = require('express');
-var router = express.Router();
 
 var connectionString = "postgres://JohnMoshakis@localhost:5432/JohnMoshakis";
 
-// middleware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
-});
+function getEmployee(request, response, next) {
+    var id = request.params.id;
+    
+    next();
+}
 
-router.get('/employees', function(request, response) {
+function getEmployees(request, response,next) {
     
     var results = [];
     
@@ -41,14 +39,15 @@ router.get('/employees', function(request, response) {
             return response.json(results);
         });
     });
-    
-});
+    next();
+}
 
-router.put('/employees', function(request, response) {
-    return response.status(200).json({});
-});
+function updateEmployee(request,response,next) {
+    next();
+}
 
-router.post('/employees', function(request, response) {
+function addEmployee(request,response,next) {
+
     var name = request.body.name
     
      pg.connect(connectionString, function(err, client, done) {
@@ -74,7 +73,12 @@ router.post('/employees', function(request, response) {
             return response.status(201).json({ success: true});
         });
     });
-});
+    
+    next();
+}
 
-module.exports = router;
+module.exports.addEmployee = addEmployee;
+module.exports.getEmployee = getEmployee;
+module.exports.getEmployees = getEmployees;
+module.exports.updateEmployee = updateEmployee;
 
