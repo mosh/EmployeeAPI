@@ -38,7 +38,7 @@ function getEmployee(request, response, next) {
     });
     
     
-    next();
+    return next();
 }
 
 function getEmployees(request, response,next) {
@@ -76,7 +76,7 @@ function getEmployees(request, response,next) {
 }
 
 function updateEmployee(request,response,next) {
-    next();
+    return next();
 }
 
 function addEmployee(request,response,next) {

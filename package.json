@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/mosh/EmployeeAPI#readme",
   "dependencies": {
+    "pg-client": "0.0.5",
+    "q": "^1.4.1",
     "restify": "^4.0.4"
   }
 }
