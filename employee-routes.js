@@ -3,6 +3,8 @@ var repository = require('./repository');
 function* getEmployee(request, response, next) {
     var id = request.params.id;
     
+    // would normally do this in one select but I want to play with promises, yield etc
+    
     var employees = yield repository.readEmployee(id);
     
     var departments = yield repository.readDepartment(employees[0].departmentId);
