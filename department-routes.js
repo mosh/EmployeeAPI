@@ -45,12 +45,9 @@ function readDepartment(id) {
                 done();
                 deferred.resolve(results);
             });
-            
         }
 
     });
-    
-    
     return deferred.promise;
 }
 
