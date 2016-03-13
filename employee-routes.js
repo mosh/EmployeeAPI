@@ -25,6 +25,10 @@ function* getEmployee(request, response, next) {
 
 function* getEmployees(request, response,next) {
     
+    var employees = yield repository.readEmployees();
+    
+    response.json(employees);
+    
     return next();
 }
 
